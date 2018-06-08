@@ -7,8 +7,9 @@
     "browserify": "mkdir -p dist && browserify index.js -s RTC --debug | exorcist dist/rtc.js.map > dist/rtc.js",
     "uglify": "uglifyjs --screw-ie8 --mangle --compress --in-source-map dist/rtc.js.map --source-map-include-sources --source-map dist/rtc.min.js.map --source-map-url rtc.min.js.map --output dist/rtc.min.js dist/rtc.js",
     "build": "npm dedupe && npm run browserify && npm run uglify",
-    "prepublish": "npm run build",
-    "test": "zuul -- test/all.js"
+    "prepublish": "npm run snyk-protect; npm run build",
+    "test": "zuul -- test/all.js",
+    "snyk-protect": "snyk protect"
   },
   "repository": {
     "type": "git",
@@ -31,7 +32,8 @@
     "rtc-attach": "^2.0.1",
     "rtc-capture": "^1.0.1",
     "rtc-quickconnect": "^4.1.0",
-    "whisk": "^1.0.0"
+    "whisk": "^1.0.0",
+    "snyk": "^1.82.1"
   },
   "devDependencies": {
     "browserify": "^9.0.3",
@@ -40,5 +42,6 @@
     "uglify-js": "^2.4.15",
     "uuid": "^2.0.1",
     "zuul": "^2.0.0"
-  }
+  },
+  "snyk": true
 }

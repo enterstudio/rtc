@@ -1,0 +1,8 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.12.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:minimatch:20160620':
+    - rtc-quickconnect > rtc-pluggable-signaller > rtc-switchboard-messenger > viralify > glob > minimatch:
+        patched: '2018-06-08T02:57:12.695Z'
